@@ -37,6 +37,22 @@ module Api
         end
       end
 
+      # GET /api/v2/species-list
+      def perenual_get_species_list
+        query = "temp"
+
+        # if query.blank ...
+
+        raw_response = PerenualService.new.get_species_list(query)
+        pp raw_response['data']
+        if raw_response[:error]
+          render json: { error: raw_response[:error] }, status: :bad_gateway
+        else
+          # searilized_data ... (after serializer is created)
+          render json: { data: raw_response['data']}
+        end
+      end
+        
       private
       def plant_params
         # Payload example: { plant: { "name": "Monstera" }}

@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :plants, only: [:index, :create] do
         collection do
           get :trefle_search
+          get :perenual_get_species_list
         end
       end
     end
