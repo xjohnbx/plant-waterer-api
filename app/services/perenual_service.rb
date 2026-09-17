@@ -12,7 +12,7 @@ class PerenualService
     return { error: 'Perenual API key not configured' } if @api_key.blank?
 
     page = 2
-    uri = URI("#{BASE_URL}/v2/species-list?key=#{@api_key}&page=#{page}")
+    uri = URI("#{BASE_URL}/v2/species-list?key=#{@api_key}&page=#{page}&indoor=1")
 
     response = Net::HTTP.get_response(uri)
 
